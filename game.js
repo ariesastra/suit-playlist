@@ -3,7 +3,7 @@ let botRandom = 0;
 let botInput = '';
 let countUser = 0;
 let countBot = 0;
-let round = 3;
+let round = 5;
 let countRound = 0;
 
 function pilihanBot() {
@@ -17,6 +17,8 @@ function pilihanBot() {
     }
 return botInput
 }
+
+// =========================BREAKOUT FUNCTION=========================
 
 function rulesSuwit() {
     if (userInput === 'gunting') {
@@ -46,91 +48,104 @@ function rulesSuwit() {
     }
 }
 
-    let pilihBatu = document.querySelector("#batu");
-    pilihBatu.addEventListener('click', function() {
-        countRound++
-        userInput = 'batu';
-        botInput = pilihanBot();
-        rulesSuwit();
-        document.querySelector('.scoreUser').innerHTML = countUser;
-        document.querySelector('.scoreBot').innerHTML = countBot;
-        
-        console.log(countUser, countBot, countRound);
-        console.log(userInput, botInput);
-        if (countRound == round) {
-            if (countUser > countBot) {
-                alert('Selamat kamu menang alias Hoki');
-                if(!alert('Reloading Page!')){window.location.reload();};
-            } else if (countBot > countUser) {
-                alert('HAHAHHAHA cupu kamu kalah sama bot');
-                if(!alert('Reloading Page!')){window.location.reload();};
-            } else {
-                alert('Yah seri garame :(');
-                if(!alert('Reloading Page!')){window.location.reload();};
-            }
-        }
-    })
-    let pilihKertas = document.querySelector("#kertas");
-    pilihKertas.addEventListener('click', function() {
-        countRound++
-        userInput = 'kertas';
-        botInput = pilihanBot();
-        rulesSuwit();
-        document.querySelector('.scoreUser').innerHTML = countUser;
-        document.querySelector('.scoreBot').innerHTML = countBot;
-        
-        console.log(countUser, countBot, countRound);
-        console.log(userInput, botInput);
-        if (countRound == round) {
-            if (countUser > countBot) {
-                alert('Selamat kamu menang alias Hoki');
-                if(!alert('Reloading Page!')){window.location.reload();};
-            } else if (countBot > countUser) {
-                alert('HAHAHHAHA cupu kamu kalah sama bot')
-                if(!alert('Reloading Page!')){window.location.reload();};
-            } else {
-                alert('Yah seri garame :(')
-                if(!alert('Reloading Page!')){window.location.reload();};
-            }
-        }
-    })
-    let pilihGunting = document.querySelector("#gunting");
-    pilihGunting.addEventListener('click', function() {
-        countRound++
-        userInput = 'gunting';
-        botInput = pilihanBot();
-        rulesSuwit();
-        document.querySelector('.scoreUser').innerHTML = countUser;
-        document.querySelector('.scoreBot').innerHTML = countBot;
-        
-        console.log(countUser, countBot, countRound);
-        console.log(userInput, botInput);
-        if (countRound == round) {
-            if (countUser > countBot) {
-                alert('Selamat kamu menang alias Hoki');
-                if(!alert('Reloading Page!')){window.location.reload();};
-            } else if (countBot > countUser) {
-                alert('HAHAHHAHA cupu kamu kalah sama bot');
-                if(!alert('Reloading Page!')){window.location.reload();};
-            } else {
-                alert('Yah seri garame :(');
-                if(!alert('Reloading Page!')){window.location.reload();};
-            }
-        }
-    })
+// =========================BREAKOUT FUNCTION=========================
+
 // Set interval image
-function botSpiningImage() {
-  let images = ['batu.png', 'kertas.png', 'gunting.png'];
-  let url = "css/image/";
+function botSpiningImage(awaw) {
+    let images = ['batu.png', 'kertas.png', 'gunting.png'];
+    let url = "css/image/";
+  
+    let image = document.getElementById('botImage');
+    // console.log(image)
+    
+    let waktuStart = new Date().getTime();
+    setInterval(() => {
+    if (new Date().getTime() - waktuStart > 500) {
+        clearInterval;
+        return;
+        }
+      let random = Math.floor(Math.random() * 3);
+      image.src = `css/image/${images[random]}`;
+    }, 50);
+    
+  }
+  
+  // botSpiningImage();
 
-  let image = document.getElementById('botImage');
-  // console.log(image)
+// =========================BREAKOUT FUNCTION=========================
 
-  setInterval(() => {
-    let random = Math.floor(Math.random() * 3);
-    image.src = `css/image/${images[random]}`;
-  }, 100);
-
-}
-
-// botSpiningImage();
+let pilihBatu = document.querySelector("#batu");
+pilihBatu.addEventListener('click', function() {
+    countRound++
+    userInput = 'batu';
+    botInput = pilihanBot();
+    botSpiningImage(botInput);
+    rulesSuwit();
+    document.querySelector('.scoreUser').innerHTML = countUser;
+    document.querySelector('.scoreBot').innerHTML = countBot;
+    
+    console.log(countUser, countBot, countRound);
+    console.log(userInput, botInput);
+    if (countRound == round) {
+        if (countUser > countBot) {
+            alert('Selamat kamu menang alias Hoki');
+            if(!alert('Reloading Page!')){window.location.reload();};
+        } else if (countBot > countUser) {
+            alert('HAHAHHAHA cupu kamu kalah sama bot');
+            if(!alert('Reloading Page!')){window.location.reload();};
+        } else {
+            alert('Yah seri garame :(');
+            if(!alert('Reloading Page!')){window.location.reload();};
+        }
+    }
+})
+let pilihKertas = document.querySelector("#kertas");
+pilihKertas.addEventListener('click', function() {
+    countRound++
+    userInput = 'kertas';
+    botInput = pilihanBot(botInput);
+    botSpiningImage();
+    rulesSuwit();
+    document.querySelector('.scoreUser').innerHTML = countUser;
+    document.querySelector('.scoreBot').innerHTML = countBot;
+    
+    console.log(countUser, countBot, countRound);
+    console.log(userInput, botInput);
+    if (countRound == round) {
+        if (countUser > countBot) {
+            alert('Selamat kamu menang alias Hoki');
+            if(!alert('Reloading Page!')){window.location.reload();};
+        } else if (countBot > countUser) {
+            alert('HAHAHHAHA cupu kamu kalah sama bot')
+            if(!alert('Reloading Page!')){window.location.reload();};
+        } else {
+            alert('Yah seri garame :(')
+            if(!alert('Reloading Page!')){window.location.reload();};
+        }
+    }
+})
+let pilihGunting = document.querySelector("#gunting");
+pilihGunting.addEventListener('click', function() {
+    countRound++
+    userInput = 'gunting';
+    botInput = pilihanBot(botInput);
+    botSpiningImage();
+    rulesSuwit();
+    document.querySelector('.scoreUser').innerHTML = countUser;
+    document.querySelector('.scoreBot').innerHTML = countBot;
+    
+    console.log(countUser, countBot, countRound);
+    console.log(userInput, botInput);
+    if (countRound == round) {
+        if (countUser > countBot) {
+            alert('Selamat kamu menang alias Hoki');
+            if(!alert('Reloading Page!')){window.location.reload();};
+        } else if (countBot > countUser) {
+            alert('HAHAHHAHA cupu kamu kalah sama bot');
+            if(!alert('Reloading Page!')){window.location.reload();};
+        } else {
+            alert('Yah seri garame :(');
+            if(!alert('Reloading Page!')){window.location.reload();};
+        }
+    }
+})
