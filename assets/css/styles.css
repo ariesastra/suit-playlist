@@ -1,0 +1,7 @@
+.text-secondary{
+    filter: brightness(0%);
+}
+
+.form-control{
+    border-color: black;
+}
