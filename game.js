@@ -6,6 +6,14 @@ let countBot = 0;
 let round = 5;
 let countRound = 0;
 
+window.localStorage
+
+let name2 = document.getElementById('name123');
+name2.innerText = localStorage.getItem('name');
+round = localStorage.getItem('round');
+let icon2 = document.getElementById('icon123');
+icon2.src = localStorage.getItem('iconUrl')
+
 function pilihanBot() {
     botRandom = Math.random();
     if (botRandom < 0.33) {
@@ -82,11 +90,10 @@ pilihBatu.addEventListener('click', function() {
     botInput = pilihanBot();
     botSpiningImage();
     rulesSuwit();
-    
     setTimeout(function() {
         document.querySelector('.scoreUser').innerHTML = countUser;
         document.querySelector('.scoreBot').innerHTML = countBot;
-        document.querySelector('#roundTambah').innerHTML = countRound;
+        document.querySelector('#roundTambah').innerHTML = countRound+1;
         console.log(countUser, countBot, countRound);
         console.log(userInput, botInput);
         if (countRound == round) {
@@ -102,8 +109,7 @@ pilihBatu.addEventListener('click', function() {
             }
         }
     }, 2000);
-})
-    
+});  
 let pilihKertas = document.querySelector("#kertas");
 pilihKertas.addEventListener('click', function() {
     countRound++
@@ -114,8 +120,7 @@ pilihKertas.addEventListener('click', function() {
     setTimeout(function() {
         document.querySelector('.scoreUser').innerHTML = countUser;
         document.querySelector('.scoreBot').innerHTML = countBot;
-        document.querySelector('#roundTambah').innerHTML = countRound;
-        
+        document.querySelector('#roundTambah').innerHTML = countRound+1;
         console.log(countUser, countBot, countRound);
         console.log(userInput, botInput);
         if (countRound == round) {
@@ -132,7 +137,6 @@ pilihKertas.addEventListener('click', function() {
         }
     }, 2000)
 });
-
 let pilihGunting = document.querySelector("#gunting");
 pilihGunting.addEventListener('click', function() {
     countRound++
@@ -143,8 +147,7 @@ pilihGunting.addEventListener('click', function() {
     setTimeout(function() {
         document.querySelector('.scoreUser').innerHTML = countUser;
         document.querySelector('.scoreBot').innerHTML = countBot;
-        document.querySelector('#roundTambah').innerHTML = countRound;
-        
+        document.querySelector('#roundTambah').innerHTML = countRound+1;
         console.log(countUser, countBot, countRound);
         console.log(userInput, botInput);
         if (countRound == round) {
