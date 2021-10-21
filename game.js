@@ -3,10 +3,10 @@ let botRandom = 0;
 let botInput = '';
 let countUser = 0;
 let countBot = 0;
-let round = 5;
+let round = 3;
 let countRound = 0;
 
-window.localStorage
+window.localStorage;
 
 let name2 = document.getElementById('name123');
 name2.innerText = localStorage.getItem('name');
@@ -25,8 +25,6 @@ function pilihanBot() {
   }
   return botInput
 }
-
-// =========================BREAKOUT FUNCTION=========================
 
 function rulesSuwit() {
   if (userInput === 'gunting') {
@@ -55,34 +53,6 @@ function rulesSuwit() {
     } else { console.log('seri'); }
   }
 }
-
-// =========================BREAKOUT FUNCTION=========================
-
-// Set interval image
-
-function botSpiningImage() {
-    let images = ['batu.png', 'kertas.png', 'gunting.png'];
-    let url = "css/image/";
-  
-    let image = document.getElementById('botImage');
-    // console.log(image)
-    
-    let waktuStart = 0;
-    waktuStart = new Date().getTime();
-    setInterval(() => {
-    if (new Date().getTime() - waktuStart > 2000) {
-        image.src = `css/image/${botInput}.png`;
-        clearInterval;
-        return;
-        }
-    let random = Math.floor(Math.random() * 3);
-    image.src = `css/image/${images[random]}`;
-    }, 50);
-  }
-  
-  // botSpiningImage();
-
-// =========================BREAKOUT FUNCTION=========================
 
 let pilihBatu = document.querySelector("#batu");
 pilihBatu.addEventListener('click', function() {
