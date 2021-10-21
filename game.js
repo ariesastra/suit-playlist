@@ -15,50 +15,51 @@ let icon2 = document.getElementById('icon123');
 icon2.src = localStorage.getItem('iconUrl')
 
 function pilihanBot() {
-    botRandom = Math.random();
-    if (botRandom < 0.33) {
-        botInput = 'gunting';
-    } else if (botRandom < 0.67) {
-        botInput = 'kertas';
-    } else {
-        botInput = 'batu'
-    }
-return botInput
+  botRandom = Math.random();
+  if (botRandom < 0.33) {
+    botInput = 'gunting';
+  } else if (botRandom < 0.67) {
+    botInput = 'kertas';
+  } else {
+    botInput = 'batu'
+  }
+  return botInput
 }
 
 // =========================BREAKOUT FUNCTION=========================
 
 function rulesSuwit() {
-    if (userInput === 'gunting') {
-        if (botInput === 'batu') {
-            countBot++
-            return countBot
-        } else if (botInput === 'kertas') {
-            countUser++
-            return countUser
-        } else {console.log('seri');}
-    } else if (userInput === 'batu') {
-        if (botInput === 'kertas') {
-            countBot++
-            return countBot
-        } else if (botInput === 'gunting') {
-            countUser++
-            return countUser
-        } else {console.log('seri');}
-    } else if (userInput === 'kertas') {
-        if (botInput === 'gunting') {
-            countBot++
-            return countBot
-        } else if (botInput === 'batu') {
-            countUser++
-            return countUser
-        } else {console.log('seri');}
-    }
+  if (userInput === 'gunting') {
+    if (botInput === 'batu') {
+      countBot++
+      return countBot
+    } else if (botInput === 'kertas') {
+      countUser++
+      return countUser
+    } else { console.log('seri'); }
+  } else if (userInput === 'batu') {
+    if (botInput === 'kertas') {
+      countBot++
+      return countBot
+    } else if (botInput === 'gunting') {
+      countUser++
+      return countUser
+    } else { console.log('seri'); }
+  } else if (userInput === 'kertas') {
+    if (botInput === 'gunting') {
+      countBot++
+      return countBot
+    } else if (botInput === 'batu') {
+      countUser++
+      return countUser
+    } else { console.log('seri'); }
+  }
 }
 
 // =========================BREAKOUT FUNCTION=========================
 
 // Set interval image
+
 function botSpiningImage() {
     let images = ['batu.png', 'kertas.png', 'gunting.png'];
     let url = "css/image/";
@@ -163,4 +164,4 @@ pilihGunting.addEventListener('click', function() {
             }
         }
     }, 2000)
-})
+});
