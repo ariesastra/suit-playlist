@@ -20,3 +20,8 @@
 #bg-block{
     width: 200px;
 }
+
+#login-block{
+    background-image: url("/assets/img/suwit.jpg");
+    background-size: contain;
+}
