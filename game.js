@@ -92,30 +92,31 @@ function cekMenang(countRound, round, countUser, countBot) {
     document.querySelector('.scoreBot').innerHTML = countBot;
     document.querySelector('#roundTambah').innerHTML = countRound + 1;
 
-    // console.log(countUser, countBot, countRound);
-    // console.log(userInput, botInput);
+    console.log(countUser, countBot, countRound);
+    console.log(userInput, botInput);
 
     if (countRound == round) {
       if (countUser > countBot) {
         localStorage.setItem("countUser", countUser);
-        window.location.reload();
+        $('#myModal').modal('show');
+        // window.location.reload();
         // alert('Selamat kamu menang alias Hoki');
         // if (!alert('Reloading Page!')) { window.location.reload(); };
       } else if (countBot > countUser) {
         localStorage.setItem("countBot", countBot);
-        window.location.reload();
+        $('#myModal').modal('show');
+        // window.location.reload();
         // alert('HAHAHHAHA cupu kamu kalah sama bot');
         // if (!alert('Reloading Page!')) { window.location.reload(); };
       } else {
         localStorage.setItem("draw", true);
-        window.location.reload();
+        $('#myModal').modal('show');
+        // window.location.reload();
         // alert('Yah seri garame :(');
         // if (!alert('Reloading Page!')) { window.location.reload(); };
       }
     }
-
   }, 2000)
-
 }
 
 // Function per suwit
@@ -159,85 +160,3 @@ function suwitGunting() {
   cekMenang(countRound, round, countUser, countBot);
 }
 
-// ===================== Codingan Sebelumnya =================================
-// let pilihBatu = document.querySelector("#batu");
-// pilihBatu.addEventListener('click', function () {
-//   countRound++
-//   userInput = 'batu';
-//   botInput = pilihanBot();
-//   botSpiningImage();
-//   rulesSuwit();
-//   setTimeout(function () {
-//     document.querySelector('.scoreUser').innerHTML = countUser;
-//     document.querySelector('.scoreBot').innerHTML = countBot;
-//     document.querySelector('#roundTambah').innerHTML = countRound + 1;
-//     console.log(countUser, countBot, countRound);
-//     console.log(userInput, botInput);
-//     if (countRound == round) {
-//       if (countUser > countBot) {
-//         alert('Selamat kamu menang alias Hoki');
-//         if (!alert('Reloading Page!')) { window.location.reload(); };
-//       } else if (countBot > countUser) {
-//         alert('HAHAHHAHA cupu kamu kalah sama bot');
-//         if (!alert('Reloading Page!')) { window.location.reload(); };
-//       } else {
-//         alert('Yah seri garame :(');
-//         if (!alert('Reloading Page!')) { window.location.reload(); };
-//       }
-//     }
-//   }, 2000);
-// });
-// let pilihKertas = document.querySelector("#kertas");
-// pilihKertas.addEventListener('click', function () {
-//   countRound++
-//   userInput = 'kertas';
-//   botInput = pilihanBot();
-//   botSpiningImage();
-//   rulesSuwit();
-//   setTimeout(function () {
-//     document.querySelector('.scoreUser').innerHTML = countUser;
-//     document.querySelector('.scoreBot').innerHTML = countBot;
-//     document.querySelector('#roundTambah').innerHTML = countRound + 1;
-//     console.log(countUser, countBot, countRound);
-//     console.log(userInput, botInput);
-//     if (countRound == round) {
-//       if (countUser > countBot) {
-//         alert('Selamat kamu menang alias Hoki');
-//         if (!alert('Reloading Page!')) { window.location.reload(); };
-//       } else if (countBot > countUser) {
-//         alert('HAHAHHAHA cupu kamu kalah sama bot')
-//         if (!alert('Reloading Page!')) { window.location.reload(); };
-//       } else {
-//         alert('Yah seri garame :(')
-//         if (!alert('Reloading Page!')) { window.location.reload(); };
-//       }
-//     }
-//   }, 2000)
-// });
-// let pilihGunting = document.querySelector("#gunting");
-// pilihGunting.addEventListener('click', function () {
-//   countRound++
-//   userInput = 'gunting';
-//   botInput = pilihanBot();
-//   botSpiningImage();
-//   rulesSuwit();
-//   setTimeout(function () {
-//     document.querySelector('.scoreUser').innerHTML = countUser;
-//     document.querySelector('.scoreBot').innerHTML = countBot;
-//     document.querySelector('#roundTambah').innerHTML = countRound + 1;
-//     console.log(countUser, countBot, countRound);
-//     console.log(userInput, botInput);
-//     if (countRound == round) {
-//       if (countUser > countBot) {
-//         alert('Selamat kamu menang alias Hoki');
-//         if (!alert('Reloading Page!')) { window.location.reload(); };
-//       } else if (countBot > countUser) {
-//         alert('HAHAHHAHA cupu kamu kalah sama bot');
-//         if (!alert('Reloading Page!')) { window.location.reload(); };
-//       } else {
-//         alert('Yah seri garame :(');
-//         if (!alert('Reloading Page!')) { window.location.reload(); };
-//       }
-//     }
-//   }, 2000)
-// });
