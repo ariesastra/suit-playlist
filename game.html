@@ -85,7 +85,9 @@
           <div id="body-modal"></div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Play Again</button>
+          <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Play Again</button>
+          <button type="button" class="btn btn-success btn-lg" onclick="window.location.href = 'index.html'">Back to
+            Start</button>
         </div>
       </div>
     </div>
@@ -123,7 +125,9 @@
     tag.src = "https://www.youtube.com/player_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var player;
 
+    // Kalo user, bot, atau draw memiliki nilai
     if (user || bot || draw) {
       if (user) {
         let laguID = 'U5pPk811rVo';
@@ -131,7 +135,6 @@
         modalParent.innerText = 'Silahkan nikmati lagu yang Anda pilih, Enjoy !';
         modalBody.innerHTML = `<div id="ytplayer"></div>`;
 
-        var player;
         function onYouTubePlayerAPIReady() {
           player = new YT.Player('ytplayer', {
             height: '360',
@@ -155,7 +158,6 @@
         modalParent.innerText = 'BOT Menang, Hacktiv8 Digoyaaangg !';
         modalBody.innerHTML = `<div id="ytplayer"></div>`;
 
-        var player;
         function onYouTubePlayerAPIReady() {
           player = new YT.Player('ytplayer', {
             height: '360',
@@ -188,10 +190,11 @@
     }
 
     if ($('#myModal').is(':visible')) {
-      console.log('masuk');
+      // console.log('masuk', $('#myModal').is(':visible'));
 
-      player.stopVideo();
+      player.pauseVideo();
     }
+
 
   </script>
 </body>

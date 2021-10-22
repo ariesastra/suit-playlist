@@ -67,7 +67,6 @@ function botSpiningImage() {
   let url = "css/image/";
 
   let image = document.getElementById('botImage');
-  // console.log(image)
 
   let waktuStart = 0;
   waktuStart = new Date().getTime();

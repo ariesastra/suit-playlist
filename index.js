@@ -1,3 +1,5 @@
+window.localStorage;
+
 function getIcon(name) {
   let nameUrl = name.replace(/ /g, "%20");
   let url = `https://avatars.dicebear.com/api/adventurer/${nameUrl}.svg`;
@@ -5,36 +7,36 @@ function getIcon(name) {
   return url;
 }
 
-  let lagu = [
-    {
-      judul: 'Indonesia Raya',
-      url: 'https://www.youtube.com/watch?v=UuPaS81n0xg'
-    },
-    {
-      judul: 'Pelangi',
-      url: 'https://www.youtube.com/watch?v=7svVeEhdbE8'
-    },
-    {
-      judul: 'Imagine',
-      url: 'https://www.youtube.com/watch?v=2Q4WQgPJn_w'
-    },
-    {
-      judul: 'Roar',
-      url: 'https://www.youtube.com/watch?v=CevxZvSJLk8'
-    },
-    {
-      judul: 'Beat It',
-      url: 'https://www.youtube.com/watch?v=oRdxUFDoQe0'
-    },
-    {
-      judul: 'Tak Gendong',
-      url: 'https://www.youtube.com/watch?v=Ctklujx7AJ0'
-    },
-    {
-      judul: 'Panda',
-      url: 'https://www.youtube.com/watch?v=1PcfRlZcvmM'
-    },
-  ]
+let lagu = [
+  {
+    judul: 'Indonesia Raya',
+    url: 'https://www.youtube.com/watch?v=UuPaS81n0xg'
+  },
+  {
+    judul: 'Pelangi',
+    url: 'https://www.youtube.com/watch?v=7svVeEhdbE8'
+  },
+  {
+    judul: 'Imagine',
+    url: 'https://www.youtube.com/watch?v=2Q4WQgPJn_w'
+  },
+  {
+    judul: 'Roar',
+    url: 'https://www.youtube.com/watch?v=CevxZvSJLk8'
+  },
+  {
+    judul: 'Beat It',
+    url: 'https://www.youtube.com/watch?v=oRdxUFDoQe0'
+  },
+  {
+    judul: 'Tak Gendong',
+    url: 'https://www.youtube.com/watch?v=Ctklujx7AJ0'
+  },
+  {
+    judul: 'Panda',
+    url: 'https://www.youtube.com/watch?v=1PcfRlZcvmM'
+  },
+]
 
 
 function play() {
@@ -70,35 +72,40 @@ function myFunction() {
 
 function alertCoba() {
   usernameInput = document.getElementById('nama').value;
-  console.log(usernameInput);
   laguInput = document.querySelector('.lagu').value;
-  console.log(laguInput);
   roundInput = document.getElementById('number').value;
-  console.log(roundInput);
-  window.localStorage
-  localStorage.setItem("name", usernameInput)
-  localStorage.setItem("round", roundInput)
-  for (let i = 0; i < lagu.length; i++) {
-    if (myFunction() == lagu[i].judul) {
-      localStorage.setItem("lagu", lagu[i].url)
+
+  console.log(laguInput);
+
+  if (usernameInput && roundInput) {
+    localStorage.setItem("name", usernameInput)
+    localStorage.setItem("round", roundInput)
+
+    for (let i = 0; i < lagu.length; i++) {
+      if (myFunction() == lagu[i].judul) {
+        localStorage.setItem("lagu", lagu[i].url)
+      }
     }
+
+    localStorage.setItem('iconUrl', iconGenDoc.src)
+
+    window.location.href = 'game.html'
   }
-  localStorage.setItem('iconUrl', iconGenDoc.src)
-  window.location.href = 'game.html'
-  
+  else alert('Isi dong data diri Andah!');
+
 }
 
-  let iconGenDoc = document.getElementById('iconGen');
-  let namaUser = document.getElementById('nama')
-  
-  namaUser.addEventListener('keydown', (e) => {
-    const text = e.currentTarget.value;
-    // TODO: Make HTTP Request Here
-    setTimeout(function() {
-      let url = getIcon(namaUser.value)
-      iconGenDoc.src = url;
-    }, 1);
-  });
+let iconGenDoc = document.getElementById('iconGen');
+let namaUser = document.getElementById('nama')
+
+namaUser.addEventListener('keydown', (e) => {
+  const text = e.currentTarget.value;
+  // TODO: Make HTTP Request Here
+  setTimeout(function () {
+    let url = getIcon(namaUser.value)
+    iconGenDoc.src = url;
+  }, 1);
+});
 // let nameUrl = name.replace(/ /g, "%20");
 
 
