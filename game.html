@@ -105,8 +105,7 @@
     integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
     crossorigin="anonymous"></script>
 
-  <!-- Our Script -->
-  <script src="game.js"></script>
+
 
   <!-- Custom JS -->
   <script>
@@ -115,6 +114,7 @@
     let user = localStorage.getItem('countUser');
     let bot = localStorage.getItem('countBot');
     let draw = localStorage.getItem('draw');
+    let statusUser = localStorage.getItem('statusUser')
 
     let titleModal = document.getElementById('title-modal');
     let modalParent = document.getElementById('text-head');
@@ -128,8 +128,8 @@
     var player;
 
     // Kalo user, bot, atau draw memiliki nilai
-    if (user || bot || draw) {
-      if (user) {
+    // if (statusUser) {
+      if (statusUser == 'menang') {
         let laguID = 'U5pPk811rVo';
         titleModal.innerText = 'Selamat, Anda menang lawan BOT !';
         modalParent.innerText = 'Silahkan nikmati lagu yang Anda pilih, Enjoy !';
@@ -149,10 +149,10 @@
           });
         }
 
-        // $('#myModal').modal('show');
-        localStorage.removeItem("countUser");
+        $('#myModal').modal('show');
+        localStorage.removeItem("statusUser");
       }
-      else if (bot) {
+      else if (statusUser == 'kalah') {
         let laguID = 'ltzYprV091c';
         titleModal.innerText = 'PAYAH, Kalah coba geh sama BOT !';
         modalParent.innerText = 'BOT Menang, Hacktiv8 Digoyaaangg !';
@@ -172,18 +172,17 @@
           });
         }
 
-        // $('#myModal').modal('show');
-        localStorage.removeItem("countBot");
+        $('#myModal').modal('show');
+        localStorage.removeItem("statusUser");
       }
-      else if (draw) {
+      else if (statusUser == 'draw'){
         titleModal.innerText = 'Ish, DRAAAWWWWW !';
         modalParent.innerHTML = "Main Lagi doong !";
 
 
-        // $('#myModal').modal('show');
-        localStorage.removeItem("draw");
+        $('#myModal').modal('show');
+        localStorage.removeItem("statusUser");
       }
-    }
 
     function onPlayerReady(event) {
       event.target.playVideo();
@@ -195,8 +194,9 @@
       player.pauseVideo();
     }
 
-
   </script>
+    <!-- Our Script -->
+    <script src="game.js"></script>
 </body>
 
 </html>

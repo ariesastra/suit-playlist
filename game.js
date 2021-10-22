@@ -97,20 +97,23 @@ function cekMenang(countRound, round, countUser, countBot) {
 
     if (countRound == round) {
       if (countUser > countBot) {
-        localStorage.setItem("countUser", countUser);
-        $('#myModal').modal('show');
+        // localStorage.setItem("countUser", countUser);
+        localStorage.setItem('statusUser', 'menang')
+        
         // window.location.reload();
         // alert('Selamat kamu menang alias Hoki');
         // if (!alert('Reloading Page!')) { window.location.reload(); };
       } else if (countBot > countUser) {
-        localStorage.setItem("countBot", countBot);
-        $('#myModal').modal('show');
+        // localStorage.setItem("countBot", countBot);
+        localStorage.setItem('statusUser', 'kalah')
+        
         // window.location.reload();
         // alert('HAHAHHAHA cupu kamu kalah sama bot');
         // if (!alert('Reloading Page!')) { window.location.reload(); };
       } else {
-        localStorage.setItem("draw", true);
-        $('#myModal').modal('show');
+        // localStorage.setItem("draw", true);
+        localStorage.setItem('statusUser', 'seri')
+        
         // window.location.reload();
         // alert('Yah seri garame :(');
         // if (!alert('Reloading Page!')) { window.location.reload(); };
