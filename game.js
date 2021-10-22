@@ -88,32 +88,57 @@ function botSpiningImage() {
 // Function Cek Menang
 function cekMenang(countRound, round, countUser, countBot) {
   setTimeout(function () {
+    // Counting Round and Score
     document.querySelector('.scoreUser').innerHTML = countUser;
     document.querySelector('.scoreBot').innerHTML = countBot;
     document.querySelector('#roundTambah').innerHTML = countRound + 1;
 
-    console.log(countUser, countBot, countRound);
-    console.log(userInput, botInput);
+    // Get Modal Element
+    let titleModal = document.getElementById('title-modal');
+    let modalParent = document.getElementById('text-head');
+    let modalBody = document.getElementById('body-modal');
+
+    // console.log(countUser, countBot, countRound);
+    // console.log(userInput, botInput);
 
     if (countRound == round) {
+      // User Menang
       if (countUser > countBot) {
-        localStorage.setItem("countUser", countUser);
+        // localStorage.setItem("countUser", countUser);
+        let laguID = 'U5pPk811rVo';
+
+        // Set Local storage status user
+        localStorage.setItem('statusUser', 'menang');
+
+        titleModal.innerText = 'Selamat, Anda menang lawan BOT !';
+        modalParent.innerText = 'Silahkan nikmati lagu yang Anda pilih, Enjoy !';
+
         $('#myModal').modal('show');
-        // window.location.reload();
-        // alert('Selamat kamu menang alias Hoki');
-        // if (!alert('Reloading Page!')) { window.location.reload(); };
-      } else if (countBot > countUser) {
-        localStorage.setItem("countBot", countBot);
+
+      }
+      // User Kalah
+      else if (countBot > countUser) {
+        // localStorage.setItem("countBot", countBot);
+        let laguID = 'ltzYprV091c';
+
+        localStorage.setItem('statusUser', 'kalah')
+
+        titleModal.innerText = 'PAYAH, Kalah coba geh sama BOT !';
+        modalParent.innerText = 'BOT Menang, Hacktiv8 Digoyaaangg !';
+
         $('#myModal').modal('show');
-        // window.location.reload();
-        // alert('HAHAHHAHA cupu kamu kalah sama bot');
-        // if (!alert('Reloading Page!')) { window.location.reload(); };
-      } else {
-        localStorage.setItem("draw", true);
+
+      }
+      // User Draw
+      else {
+        // localStorage.setItem("draw", true);
+        localStorage.setItem('statusUser', 'seri');
+
+        titleModal.innerText = 'Ish, DRAAAWWWWW !';
+        modalParent.innerHTML = "Main Lagi doong !";
+
         $('#myModal').modal('show');
-        // window.location.reload();
-        // alert('Yah seri garame :(');
-        // if (!alert('Reloading Page!')) { window.location.reload(); };
+
       }
     }
   }, 2000)
@@ -158,31 +183,4 @@ function suwitGunting() {
   rulesSuwit();
 
   cekMenang(countRound, round, countUser, countBot);
-}
-
-function youTube(laguID) {
-  // For Youtube
-  var tag = document.createElement('script');
-  tag.src = "https://www.youtube.com/player_api";
-  var firstScriptTag = document.getElementsByTagName('script')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  var player;
-
-  function onYouTubePlayerAPIReady() {
-    player = new YT.Player('ytplayer', {
-      height: '360',
-      width: '640',
-      videoId: `${laguID}`,
-      playerVars: {
-        'playsinline': 1
-      },
-      events: {
-        'onReady': onPlayerReady,
-      }
-    });
-  }
-
-  function onPlayerReady(event) {
-    event.target.playVideo();
-  }
 }
