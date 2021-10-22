@@ -112,6 +112,7 @@ function cekMenang(countRound, round, countUser, countBot) {
 
         titleModal.innerText = 'Selamat, Anda menang lawan BOT !';
         modalParent.innerText = 'Silahkan nikmati lagu yang Anda pilih, Enjoy !';
+        modalBody.innerHTML = '<div id="ytplayer"></div>';
 
         $('#myModal').modal('show');
 
@@ -125,6 +126,7 @@ function cekMenang(countRound, round, countUser, countBot) {
 
         titleModal.innerText = 'PAYAH, Kalah coba geh sama BOT !';
         modalParent.innerText = 'BOT Menang, Hacktiv8 Digoyaaangg !';
+        modalBody.innerHTML = '<div id="ytplayer"></div>';
 
         $('#myModal').modal('show');
 
