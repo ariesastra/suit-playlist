@@ -102,34 +102,37 @@ function cekMenang(countRound, round, countUser, countBot) {
     // console.log(userInput, botInput);
 
     if (countRound == round) {
+      document.querySelector('#roundTambah').innerHTML = ' Over!';
       // User Menang
       if (countUser > countBot) {
-        // localStorage.setItem("countUser", countUser);
-        let laguID = 'U5pPk811rVo';
+        // let laguID = 'U5pPk811rVo';
 
         // Set Local storage status user
         localStorage.setItem('statusUser', 'menang');
 
         titleModal.innerText = 'Selamat, Anda menang lawan BOT !';
         modalParent.innerText = 'Silahkan nikmati lagu yang Anda pilih, Enjoy !';
-        modalBody.innerHTML = '<div id="ytplayer"></div>';
 
+        // get choosen lagi from local storage
+        let lagu = localStorage.getItem('lagu');
+        let ytId = lagu.split("=")[1];
+
+
+        $("#youtube")[0].src = `https://www.youtube.com/embed/${ytId}`;
         $('#myModal').modal('show');
-
+        play()
       }
       // User Kalah
       else if (countBot > countUser) {
-        // localStorage.setItem("countBot", countBot);
-        let laguID = 'ltzYprV091c';
-
         localStorage.setItem('statusUser', 'kalah')
 
         titleModal.innerText = 'PAYAH, Kalah coba geh sama BOT !';
         modalParent.innerText = 'BOT Menang, Hacktiv8 Digoyaaangg !';
-        modalBody.innerHTML = '<div id="ytplayer"></div>';
 
+        $('#youtube')[0].src = 'https://www.youtube.com/embed/ltzYprV091c';
+        // $('#youtube')[0].src = 'https://www.youtube.com/embed/aOSgPWK6p_g';
         $('#myModal').modal('show');
-
+        play();
       }
       // User Draw
       else {
@@ -139,8 +142,8 @@ function cekMenang(countRound, round, countUser, countBot) {
         titleModal.innerText = 'Ish, DRAAAWWWWW !';
         modalParent.innerHTML = "Main Lagi doong !";
 
+        $("#youtube").remove();
         $('#myModal').modal('show');
-
       }
     }
   }, 2000)
@@ -185,4 +188,19 @@ function suwitGunting() {
   rulesSuwit();
 
   cekMenang(countRound, round, countUser, countBot);
+}
+
+// Stop Youtube
+function stop() {
+  $("#youtube")[0].src += "?autoplay=0";
+}
+
+// Play Youtube
+function play() {
+  $("#youtube")[0].src += "?autoplay=1";
+}
+
+// Send Choosed Song
+function songId() {
+
 }

@@ -38,7 +38,6 @@ let lagu = [
   },
 ]
 
-
 function play() {
   // initial data
   data = {
@@ -108,6 +107,7 @@ namaUser.addEventListener('keydown', (e) => {
 });
 // let nameUrl = name.replace(/ /g, "%20");
 
-
+let vol = document.getElementById('vol');
+vol.volume = 0.05;
 
 

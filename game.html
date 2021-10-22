@@ -82,11 +82,16 @@
         </div>
         <div class="modal-body text-center">
           <h1 id="text-head"></h1>
-          <div id="body-modal"></div>
+          <div id="body-modal">
+            <iframe id="youtube" width="560" height="315" src="https://www.youtube.com/embed/mdmv1kP06q0"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal"
-            onclick="window.location.reload()">Play Again</button>
+          <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal" onclick="playAgain()">Play
+            Again</button>
           <button type="button" class="btn btn-success btn-lg" onclick="window.location.href = 'index.html'">Back to
             Start</button>
         </div>
@@ -105,59 +110,18 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
     integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
     crossorigin="anonymous"></script>
-
+  <!-- Our Script -->
+  <script src="game.js"></script>
 
   <!-- Custom JS -->
   <script>
     window.localStorage;
-    // Showing Modal
-    let statusUser = localStorage.getItem('statusUser')
 
-    // For Youtube Player
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/player_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    var player;
-
-    function onYouTubePlayerAPIReady() {
-      player = new YT.Player('ytplayer', {
-        height: '360',
-        width: '640',
-        // videoId: `${laguID}`,
-        videoId: `ltzYprV091c`,
-        playerVars: {
-          'playsinline': 1
-        },
-        events: {
-          'onReady': onPlayerReady,
-        }
-      });
+    function playAgain() {
+      localStorage.setItem('statusUser', '');
+      window.location.reload()
     }
-
-    function onPlayerReady(event) {
-      event.target.playVideo();
-    }
-
-    // Kalo user, bot, atau draw memiliki nilai
-    // if (statusUser == 'menang') {
-
-    //   localStorage.removeItem("statusUser");
-    // }
-    // else if (statusUser == 'kalah') {
-
-    //   localStorage.removeItem("statusUser");
-    // }
-    // else if (statusUser == 'draw') {
-
-    //   localStorage.removeItem("statusUser");
-    // }
-
-    // if ($('#myModal').is(':visible')) player.pauseVideo();
-
   </script>
-  <!-- Our Script -->
-  <script src="game.js"></script>
 </body>
 
 </html>
