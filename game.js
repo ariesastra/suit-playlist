@@ -129,8 +129,8 @@ function cekMenang(countRound, round, countUser, countBot) {
         titleModal.innerText = 'PAYAH, Kalah coba geh sama BOT !';
         modalParent.innerText = 'BOT Menang, Hacktiv8 Digoyaaangg !';
 
-        $('#youtube')[0].src = 'https://www.youtube.com/embed/ltzYprV091c';
-        // $('#youtube')[0].src = 'https://www.youtube.com/embed/aOSgPWK6p_g';
+        // $('#youtube')[0].src = 'https://www.youtube.com/embed/ltzYprV091c';
+        $('#youtube')[0].src = 'https://www.youtube.com/embed/TPiq6UwJZYw';
         $('#myModal').modal('show');
         play();
       }
