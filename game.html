@@ -82,10 +82,15 @@
         </div>
         <div class="modal-body text-center">
           <h1 id="text-head"></h1>
-          <div id="body-modal"></div>
+          <div id="body-modal">
+            <div id="ytplayer"></div>
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Play Again</button>
+          <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal"
+            onclick="window.location.reload()">Play Again</button>
+          <button type="button" class="btn btn-success btn-lg" onclick="window.location.href = 'index.html'">Back to
+            Start</button>
         </div>
       </div>
     </div>
@@ -103,97 +108,59 @@
     integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
     crossorigin="anonymous"></script>
 
-  <!-- Our Script -->
-  <script src="game.js"></script>
+
 
   <!-- Custom JS -->
   <script>
     window.localStorage;
     // Showing Modal
-    let user = localStorage.getItem('countUser');
-    let bot = localStorage.getItem('countBot');
-    let draw = localStorage.getItem('draw');
+    let statusUser = localStorage.getItem('statusUser')
 
-    let titleModal = document.getElementById('title-modal');
-    let modalParent = document.getElementById('text-head');
-    let modalBody = document.getElementById('body-modal');
-
-    // For Youtube
+    // For Youtube Player
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/player_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var player;
 
-    if (user || bot || draw) {
-      if (user) {
-        let laguID = 'U5pPk811rVo';
-        titleModal.innerText = 'Selamat, Anda menang lawan BOT !';
-        modalParent.innerText = 'Silahkan nikmati lagu yang Anda pilih, Enjoy !';
-        modalBody.innerHTML = `<div id="ytplayer"></div>`;
-
-        var player;
-        function onYouTubePlayerAPIReady() {
-          player = new YT.Player('ytplayer', {
-            height: '360',
-            width: '640',
-            videoId: `${laguID}`,
-            playerVars: {
-              'playsinline': 1
-            },
-            events: {
-              'onReady': onPlayerReady,
-            }
-          });
+    function onYouTubePlayerAPIReady() {
+      player = new YT.Player('ytplayer', {
+        height: '360',
+        width: '640',
+        // videoId: `${laguID}`,
+        videoId: `ltzYprV091c`,
+        playerVars: {
+          'playsinline': 1
+        },
+        events: {
+          'onReady': onPlayerReady,
         }
-
-        $('#myModal').modal('show');
-        localStorage.removeItem("countUser");
-      }
-      else if (bot) {
-        let laguID = 'ltzYprV091c';
-        titleModal.innerText = 'PAYAH, Kalah coba geh sama BOT !';
-        modalParent.innerText = 'BOT Menang, Hacktiv8 Digoyaaangg !';
-        modalBody.innerHTML = `<div id="ytplayer"></div>`;
-
-        var player;
-        function onYouTubePlayerAPIReady() {
-          player = new YT.Player('ytplayer', {
-            height: '360',
-            width: '640',
-            videoId: `${laguID}`,
-            playerVars: {
-              'playsinline': 1
-            },
-            events: {
-              'onReady': onPlayerReady,
-            }
-          });
-        }
-
-        $('#myModal').modal('show');
-        localStorage.removeItem("countBot");
-      }
-      else if (draw) {
-        titleModal.innerText = 'Ish, DRAAAWWWWW !';
-        modalParent.innerHTML = "Main Lagi doong !";
-
-
-        $('#myModal').modal('show');
-        localStorage.removeItem("draw");
-      }
+      });
     }
 
     function onPlayerReady(event) {
       event.target.playVideo();
     }
 
-    if ($('#myModal').is(':visible')) {
-      console.log('masuk');
+    // Kalo user, bot, atau draw memiliki nilai
+    // if (statusUser == 'menang') {
 
-      player.stopVideo();
-    }
+    //   localStorage.removeItem("statusUser");
+    // }
+    // else if (statusUser == 'kalah') {
+
+    //   localStorage.removeItem("statusUser");
+    // }
+    // else if (statusUser == 'draw') {
+
+    //   localStorage.removeItem("statusUser");
+    // }
+
+    // if ($('#myModal').is(':visible')) player.pauseVideo();
 
   </script>
+  <!-- Our Script -->
+  <script src="game.js"></script>
 </body>
 
 </html>
