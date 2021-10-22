@@ -120,12 +120,7 @@
     let modalParent = document.getElementById('text-head');
     let modalBody = document.getElementById('body-modal');
 
-    // For Youtube
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/player_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    var player;
+
 
     // Kalo user, bot, atau draw memiliki nilai
     if (user || bot || draw) {
@@ -135,19 +130,6 @@
         modalParent.innerText = 'Silahkan nikmati lagu yang Anda pilih, Enjoy !';
         modalBody.innerHTML = `<div id="ytplayer"></div>`;
 
-        function onYouTubePlayerAPIReady() {
-          player = new YT.Player('ytplayer', {
-            height: '360',
-            width: '640',
-            videoId: `${laguID}`,
-            playerVars: {
-              'playsinline': 1
-            },
-            events: {
-              'onReady': onPlayerReady,
-            }
-          });
-        }
 
         // $('#myModal').modal('show');
         localStorage.removeItem("countUser");
@@ -179,23 +161,12 @@
         titleModal.innerText = 'Ish, DRAAAWWWWW !';
         modalParent.innerHTML = "Main Lagi doong !";
 
-
         // $('#myModal').modal('show');
         localStorage.removeItem("draw");
       }
     }
 
-    function onPlayerReady(event) {
-      event.target.playVideo();
-    }
-
-    if ($('#myModal').is(':visible')) {
-      // console.log('masuk', $('#myModal').is(':visible'));
-
-      player.pauseVideo();
-    }
-
-
+    // if ($('#myModal').is(':visible')) player.pauseVideo();
   </script>
 </body>
 
