@@ -5,3 +5,18 @@
 .form-control{
     border-color: black;
 }
+
+.display-5 {
+    font-size: 25px;
+    margin-bottom: 5px;
+    padding-bottom: 0px;
+}
+
+.coment {
+    margin-left: 30px;
+    
+}
+
+#bg-block{
+    width: 200px;
+}
