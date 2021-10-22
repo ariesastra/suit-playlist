@@ -5,39 +5,37 @@ function getIcon(name) {
   return url;
 }
 
-function getLagu() {
   let lagu = [
     {
-      judul: '',
+      judul: 'Indonesia Raya',
       url: 'https://www.youtube.com/watch?v=UuPaS81n0xg'
     },
     {
-      judul: '',
+      judul: 'Pelangi',
       url: 'https://www.youtube.com/watch?v=7svVeEhdbE8'
     },
     {
-      judul: '',
+      judul: 'Imagine',
       url: 'https://www.youtube.com/watch?v=2Q4WQgPJn_w'
     },
     {
-      judul: '',
+      judul: 'Roar',
       url: 'https://www.youtube.com/watch?v=CevxZvSJLk8'
     },
     {
-      judul: '',
+      judul: 'Beat It',
       url: 'https://www.youtube.com/watch?v=oRdxUFDoQe0'
     },
     {
-      judul: '',
+      judul: 'Tak Gendong',
       url: 'https://www.youtube.com/watch?v=Ctklujx7AJ0'
     },
     {
-      judul: '',
+      judul: 'Panda',
       url: 'https://www.youtube.com/watch?v=1PcfRlZcvmM'
     },
   ]
 
-}
 
 function play() {
   // initial data
@@ -58,4 +56,51 @@ function play() {
   return data;
 }
 
-console.log(play());
+// console.log(play());
+
+let usernameInput = '';
+let laguInput = '';
+let roundInput = '';
+let buttonInput = document.querySelector('.buttonInput')
+
+function myFunction() {
+  let mylist = document.getElementById("exampleFormControlSelect1");
+  return mylist.options[mylist.selectedIndex].text
+}
+
+function alertCoba() {
+  usernameInput = document.getElementById('nama').value;
+  console.log(usernameInput);
+  laguInput = document.querySelector('.lagu').value;
+  console.log(laguInput);
+  roundInput = document.getElementById('number').value;
+  console.log(roundInput);
+  window.localStorage
+  localStorage.setItem("name", usernameInput)
+  localStorage.setItem("round", roundInput)
+  for (let i = 0; i < lagu.length; i++) {
+    if (myFunction() == lagu[i].judul) {
+      localStorage.setItem("lagu", lagu[i].url)
+    }
+  }
+  localStorage.setItem('iconUrl', iconGenDoc.src)
+  window.location.href = 'game.html'
+  
+}
+
+  let iconGenDoc = document.getElementById('iconGen');
+  let namaUser = document.getElementById('nama')
+  
+  namaUser.addEventListener('keydown', (e) => {
+    const text = e.currentTarget.value;
+    // TODO: Make HTTP Request Here
+    setTimeout(function() {
+      let url = getIcon(namaUser.value)
+      iconGenDoc.src = url;
+    }, 1);
+  });
+// let nameUrl = name.replace(/ /g, "%20");
+
+
+
+
