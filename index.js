@@ -17,24 +17,24 @@ let lagu = [
     url: 'https://www.youtube.com/watch?v=7svVeEhdbE8'
   },
   {
-    judul: 'Imagine',
+    judul: 'John Lennon - Imagine',
     url: 'https://www.youtube.com/watch?v=2Q4WQgPJn_w'
   },
   {
-    judul: 'Roar',
-    url: 'https://www.youtube.com/watch?v=CevxZvSJLk8'
+    judul: 'Katy Perry - Last Friday Night [T.G.I.F]',
+    url: 'https://www.youtube.com/watch?v=lCMJA9jyEMg'
   },
   {
-    judul: 'Beat It',
+    judul: 'Michael Jackson - Beat It',
     url: 'https://www.youtube.com/watch?v=oRdxUFDoQe0'
   },
   {
-    judul: 'Tak Gendong',
+    judul: 'Mbah Surip - Tak Gendong',
     url: 'https://www.youtube.com/watch?v=Ctklujx7AJ0'
   },
   {
-    judul: 'Panda',
-    url: 'https://www.youtube.com/watch?v=1PcfRlZcvmM'
+    judul: 'Bruno Mars - The Lazy Song',
+    url: 'https://www.youtube.com/watch?v=fLexgOxsZu0'
   },
 ]
 
